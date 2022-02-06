@@ -1,0 +1,28 @@
+{
+  "name": "let-us-build-a-team",
+  "version": "1.0.0",
+  "description": "Team Profile Generator",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SpencerHulse/let-us-build-a-team.git"
+  },
+  "author": "Spencer Hulse",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SpencerHulse/let-us-build-a-team/issues"
+  },
+  "homepage": "https://github.com/SpencerHulse/let-us-build-a-team#readme",
+  "devDependencies": {
+    "jest": "^27.5.0"
+  },
+  "dependencies": {
+    "inquirer": "^8.2.0"
+  }
+}
