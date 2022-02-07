@@ -23,6 +23,8 @@ const generatePage = (teamData) => {
     <h1 class="bg-danger p-5 text-center text-white">My Team</h1>
     <div class="row row-cols-3 py-5 p-5 d-flex justify-content-center">
       ${managerCard(manager)}
+      ${engineerCards(engineers)}
+      ${internCards(interns)}
     </div>
   </body>
 </html>`;
@@ -45,16 +47,84 @@ const managerCard = (manager) => {
               <li class="list-group-item">
                 Email: 
                 <a href="mailto:${manager[0].email}">
-                ${manager[0].email}
+                  ${manager[0].email}
                 </a>
               </li>
               <li class="list-group-item">Office Number: 
-              ${manager[0].officeNumber}
+                ${manager[0].officeNumber}
               </li>
             </ul>
           </div>
         </div>
       </div>`;
+};
+
+const engineerCards = (engineers) => {
+  return `
+  ${engineers
+    .map((engineer) => {
+      return `
+      <div class="col">
+        <div class="team-manager card m-auto" style="width: 18rem">
+          <div class="card-body bg-primary text-white">
+            <h2 class="card-title">${engineer.name}</h2>
+            <p class="card-text">
+              <i class="fa fa-glasses" aria-hidden="true"></i> 
+              ${engineer.getRole()}
+            </p>
+          </div>
+          <div class="bg-light py-4 px-3" style="height: 14rem">
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">ID: ${engineer.id}</li>
+              <li class="list-group-item">
+                Email: 
+                <a href="mailto:${engineer.email}">
+                  ${engineer.email}
+                </a>
+              </li>
+              <li class="list-group-item">GitHub: 
+                <a href="https://github.com/${engineer.github}" target="_blank">
+                  ${engineer.github}
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>`;
+    })
+    .join("")}`;
+};
+
+const internCards = (interns) => {
+  return `
+  ${interns
+    .map((intern) => {
+      return `
+      <div class="col">
+        <div class="team-manager card m-auto" style="width: 18rem">
+          <div class="card-body bg-primary text-white">
+            <h2 class="card-title">${intern.name}</h2>
+            <p class="card-text">
+              <i class="fa fa-user-graduate" aria-hidden="true"></i> 
+              ${intern.getRole()}
+            </p>
+          </div>
+          <div class="bg-light py-4 px-3" style="height: 14rem">
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">ID: ${intern.id}</li>
+              <li class="list-group-item">
+                Email: 
+                <a href="mailto:${intern.email}">
+                  ${intern.email}
+                </a>
+              </li>
+              <li class="list-group-item">School: ${intern.school}</li>
+            </ul>
+          </div>
+        </div>
+      </div>`;
+    })
+    .join("")}`;
 };
 
 module.exports = generatePage;
