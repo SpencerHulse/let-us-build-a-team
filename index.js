@@ -1,4 +1,6 @@
 const inquirer = require("inquirer");
+const generatePage = require("./src/page-template");
+const { writeFile, copyFile } = require("./src/generate-site");
 const Manager = require("./lib/Manager");
 const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
@@ -175,10 +177,18 @@ initializePrompts()
   .then(otherMembers)
   .then((teamData) => {
     console.log(teamData);
-    /*   const teamManager = new Manager(
-    data.name,
-    data.id,
-    data.email,
-    data.officeNumber
-  ); */
+    return generatePage(teamData);
+  })
+  .then((pageHTML) => {
+    return writeFile(pageHTML);
+  })
+  .then((writeFileResponse) => {
+    console.log(writeFileResponse);
+    /* return copyFile(); */
+  })
+  /*   .then((copyFileResponse) => {
+    console.log(copyFileResponse);
+  }) */
+  .catch((err) => {
+    console.log(err);
   });
