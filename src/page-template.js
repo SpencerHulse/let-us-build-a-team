@@ -1,10 +1,10 @@
 const generatePage = (teamData) => {
-  const { members, ...manager } = teamData;
+  const { manager, engineers, interns } = teamData;
 
   return `
-  ${members}
-  Break
-  ${manager} 
+    ${manager[0].getRole()}
+    ${engineers[0].getRole()}
+    ${interns[0].getRole()}
   `;
 };
 

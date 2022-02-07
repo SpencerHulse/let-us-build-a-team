@@ -5,6 +5,12 @@ const Manager = require("./lib/Manager");
 const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
 
+const teamMembers = {
+  manager: [],
+  engineers: [],
+  interns: [],
+};
+
 const teamManagerPrompts = [
   {
     type: "input",
@@ -154,30 +160,41 @@ const otherMemberPrompts = [
   },
 ];
 
-const initializePrompts = () => {
-  return inquirer.prompt(teamManagerPrompts);
-};
-
-const otherMembers = (teamData) => {
-  if (!teamData.members) {
-    teamData.members = [];
-  }
-
+const otherMembers = () => {
   return inquirer.prompt(otherMemberPrompts).then((memberData) => {
-    teamData.members.push(memberData);
-    if (memberData.confirmAddMember) {
-      return otherMembers(teamData);
+    if (memberData.member === "Engineer") {
+      const { name, id, email, github } = memberData;
+      const engineer = new Engineer(name, id, email, github);
+      teamMembers.engineers.push(engineer);
     } else {
-      return teamData;
+      const { name, id, email, school } = memberData;
+      const intern = new Intern(name, id, email, school);
+      teamMembers.interns.push(intern);
+    }
+
+    if (memberData.confirmAddMember) {
+      return otherMembers();
+    } else {
+      let members = roleCall();
+      return members;
     }
   });
 };
 
-initializePrompts()
+const roleCall = () => {
+  return teamMembers;
+};
+
+inquirer
+  .prompt(teamManagerPrompts)
+  .then((managerData) => {
+    const { name, id, email, officeNumber } = managerData;
+    const manager = new Manager(name, id, email, officeNumber);
+    teamMembers.manager.push(manager);
+  })
   .then(otherMembers)
-  .then((teamData) => {
-    console.log(teamData);
-    return generatePage(teamData);
+  .then((teamMembers) => {
+    return generatePage(teamMembers);
   })
   .then((pageHTML) => {
     return writeFile(pageHTML);
