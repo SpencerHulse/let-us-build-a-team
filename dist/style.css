@@ -1,0 +1,22 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.card {
+  width: 280px;
+  -webkit-box-shadow: 3px 4px 5px 0px rgba(0, 0, 0, 0.76),
+    5px 6px 5px 0px rgba(0, 0, 0, 0.37);
+
+  box-shadow: 3px 4px 5px 0px rgba(0, 0, 0, 0.76),
+    5px 6px 5px 0px rgba(0, 0, 0, 0.37);
+}
+
+.list-container {
+  height: 224px;
+}
+
+.list-group-item {
+  width: 246px;
+}
