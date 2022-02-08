@@ -20,8 +20,8 @@ const generatePage = (teamData) => {
   </head>
 
   <body>
-    <h1 class="bg-danger p-5 text-center text-white">My Team</h1>
-    <div class="row row-cols-3 py-5 p-5 d-flex justify-content-center">
+    <h1 class="bg-danger p-5 mb-5 text-center text-white">My Team</h1>
+    <div class="pt-4 d-flex flex-wrap justify-content-center">
       ${managerCard(manager)}
       ${engineerCards(engineers)}
       ${internCards(interns)}
@@ -32,8 +32,8 @@ const generatePage = (teamData) => {
 
 const managerCard = (manager) => {
   return `
-      <div class="col">
-        <div class="team-manager card m-auto" style="width: 18rem">
+      <div class="mb-4 mt-1 mx-3">
+        <div class="card">
           <div class="card-body bg-primary text-white">
             <h2 class="card-title">${manager[0].name}</h2>
             <p class="card-text">
@@ -41,8 +41,8 @@ const managerCard = (manager) => {
               ${manager[0].getRole()}
             </p>
           </div>
-          <div class="bg-light py-4 px-3" style="height: 14rem">
-            <ul class="list-group list-group-flush">
+          <div class="list-container bg-light py-4 px-3 d-flex justify-content-center align-items-center">
+            <ul class="list-group list-group-flush shadow-sm">
               <li class="list-group-item">ID: ${manager[0].id}</li>
               <li class="list-group-item">
                 Email: 
@@ -64,8 +64,8 @@ const engineerCards = (engineers) => {
   ${engineers
     .map((engineer) => {
       return `
-      <div class="col">
-        <div class="team-manager card m-auto" style="width: 18rem">
+      <div class="mb-4 mt-1 mx-3">
+        <div class="card">
           <div class="card-body bg-primary text-white">
             <h2 class="card-title">${engineer.name}</h2>
             <p class="card-text">
@@ -73,8 +73,8 @@ const engineerCards = (engineers) => {
               ${engineer.getRole()}
             </p>
           </div>
-          <div class="bg-light py-4 px-3" style="height: 14rem">
-            <ul class="list-group list-group-flush">
+          <div class="list-container bg-light py-4 px-3 d-flex justify-content-center align-items-center">
+            <ul class="list-group list-group-flush shadow-sm">
               <li class="list-group-item">ID: ${engineer.id}</li>
               <li class="list-group-item">
                 Email: 
@@ -100,8 +100,8 @@ const internCards = (interns) => {
   ${interns
     .map((intern) => {
       return `
-      <div class="col">
-        <div class="team-manager card m-auto" style="width: 18rem">
+      <div class="mb-4 mt-1 mx-3">
+        <div class="card">
           <div class="card-body bg-primary text-white">
             <h2 class="card-title">${intern.name}</h2>
             <p class="card-text">
@@ -109,8 +109,8 @@ const internCards = (interns) => {
               ${intern.getRole()}
             </p>
           </div>
-          <div class="bg-light py-4 px-3" style="height: 14rem">
-            <ul class="list-group list-group-flush">
+          <div class="list-container bg-light py-4 px-3 d-flex justify-content-center align-items-center">
+            <ul class="list-group list-group-flush shadow-sm">
               <li class="list-group-item">ID: ${intern.id}</li>
               <li class="list-group-item">
                 Email: 
